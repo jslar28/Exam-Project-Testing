@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title>KEANet</title>        
+    </head>
+    <style>
+        .main-form {
+            margin: 0 auto;
+            width:80% /* value of your choice which suits your alignment */
+        }
+        .header {
+            text-align: center;
+        }
+        #selectcellphone {
+            height: 150px;
+        }
+        #internetConnection {
+            padding-bottom: 25px;
+        }
+        h5 {
+            padding-top: 10px;
+        }
+        .buy-btn {
+            padding-bottom: 30px;
+        }
+    </style>
+    <body>
+        <h1 class="header">KEANet</h1>
+        <form class="main-form">
+
+            <div class="form-check" id="internetConnection">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Internet connection</label>
+            </div>
+
+            <div class="form-group">
+                <label for="phonelines">Phone lines:</label>
+                <select class="form-control" id="phonelines">
+                    <option>select number of phone lines</option>
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                </select>
+            </div>
+            <div class="form-group" id="selectcellphone">
+                <label for="cellphones">Cell phones:</label>
+                <select multiple class="form-control" id="cellphones">
+                    <option value="moto">Motorola G99</option>
+                    <option value="iphone">iPhone 99</option>
+                    <option value="samsung">Samsung Galaxy 99</option>
+                    <option value="sony">Sony Xperia 99</option>
+                    <option value="huawei">Huawei 99</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="basket">Your basket:</label>
+                <select multiple class="form-control" id="basket">
+                </select>
+            </div>
+            <h5 id="total-price"></h5>
+            <div class="buy-btn">
+                <button id="send-total-amount" type="button" class="btn btn-dark">Buy</button>
+            </div>
+        </form>
+
+    <script>
+
+        let totalPrice = 0;
+        selectedPhones = [];
+        CustomersBasket = [];
+
+
+
+        $(document).ready(function(){
+            $('#total-price').text('Total Price: ' + totalPrice + ' DKK');
+
+            $("#cellphones").change(function(){
+                var selectedPhone = $(this).children("option:selected").text();
+
+                selectedPhones.push(selectedPhone);
+
+                $("#basket").append(new Option(selectedPhone, "value"));
+
+                console.log(selectedPhone);
+
+                switch(selectedPhone) {
+                    case "Motorola G99":
+                        console.log("moto11");
+                        totalPrice = totalPrice + 800;
+                        break;
+                    case "iPhone 99":
+                        console.log("ihpone11");
+                        totalPrice = totalPrice + 6000;
+                        break;
+                    case "Samsung Galaxy 99":
+                        console.log("samsung11");
+                        totalPrice = totalPrice + 1000;
+                        break;
+                    case "Sony Xperia 99":
+                        console.log("sony11");
+                        totalPrice = totalPrice + 900;
+                        break;
+                    case "Huawei 99":
+                        console.log("huawei11");
+                        totalPrice = totalPrice + 900;
+                        break;
+                    default:
+                    // code block
+                        console.log("default!");
+                }
+                $("#total-price").empty();
+                $('#total-price').append('Total Price: ' + totalPrice + ' DKK').show();
+            });
+
+            $("#basket").change(function(){
+                var selectedPhone = $(this).children("option:selected").text();
+
+                $('option:selected', this).remove();
+
+                switch(selectedPhone) {
+                    case "Motorola G99":
+                        console.log("moto11");
+                        totalPrice = totalPrice - 800;
+                        break;
+                    case "iPhone 99":
+                        console.log("ihpone11");
+                        totalPrice = totalPrice - 6000;
+                        break;
+                    case "Samsung Galaxy 99":
+                        console.log("samsung11");
+                        totalPrice = totalPrice - 1000;
+                        break;
+                    case "Sony Xperia 99":
+                        console.log("sony11");
+                        totalPrice = totalPrice - 900;
+                        break;
+                    case "Huawei 99":
+                        console.log("huawei11");
+                        totalPrice = totalPrice - 900;
+                        break;
+                    default:
+                        // code block
+                        console.log("default!");
+                }
+                $("#total-price").empty();
+                $('#total-price').append('Total Price: ' + totalPrice + ' DKK').show();
+            });
+        });
+
+
+
+        $(document).ready(function(){
+            $("#basket").change(function(){
+                $('option:selected', this).remove();
+            });
+        });
+
+        $('#exampleCheck1').change(function (event) {
+            console.log("lol")
+            $.ajax({
+                type: 'GET',
+                url: '/testlol'
+            })
+        })
+
+       $('#send-total-amount').click(function (event) {
+           console.log("Sender request!");
+           //if (totalPrice == 0) {
+             //  alert("You havent added anything to your basket");
+           //}
+           //else {
+           //    alert("Total price: " + totalPrice);
+           //}
+           const purchaseData = {
+               internetConnection: true,
+               phoneLines: 8,
+               cellPhones: [{
+                   cellName: "Iphone",
+                   price: 6000
+               }],
+               price: 6800
+           };
+            event.preventDefault();
+
+           $.get('/internet',
+               function (data) {
+                   console.log('hej', data);
+               });
+
+            //$.ajax({
+            //    url: "http://localhost:8181/internet-connection",
+            //    success: function(result) {
+            //        console.log(result);
+            //    }
+            //})
+        });
+    </script>
+    </body>
+</html>
