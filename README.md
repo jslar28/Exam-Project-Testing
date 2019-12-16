@@ -3,11 +3,15 @@ Exam project for testing
 
 # Setup
 
-Commands in terminal: \n
-cd ./frontend \n
-    (Go to frontend folder in terminal) \n
-npm install \n
-    (Installs dependencies) \n
+Commands in terminal:
+
+cd ./frontend
+    
+    (Go to frontend folder in terminal)
+
+npm install
+
+    (Installs dependencies)
 
 Make sure nothing runs on port 3000
 Guide to kill processes on port 3000(just in case):
