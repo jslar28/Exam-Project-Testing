@@ -3,6 +3,7 @@ Exam project for testing
 
 # Setup
 
+## Setup Frontend
 Commands in terminal:
 
     cd ./frontend
@@ -11,7 +12,7 @@ Commands in terminal:
     npm install
     (Installs dependencies)
 
-Make sure nothing runs on port 3000
+## Make sure nothing runs on port 3000
 
 Guide to kill processes on port 3000 (just in case):
 
@@ -25,7 +26,7 @@ Then in CMD, run command:
         taskkill /pid {id} /f
         (Replace {id} with the ID found in the previous step)
 
-# Run
+# Run Frontend
 
 Commands in terminal:
 
