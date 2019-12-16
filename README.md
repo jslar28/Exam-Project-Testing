@@ -13,12 +13,15 @@ Commands in terminal:
 
 Make sure nothing runs on port 3000
 
-Guide to kill processes on port 3000(just in case):
+Guide to kill processes on port 3000 (just in case):
 
-    In CMD, run command: 
+In CMD, run command: 
+
         netstat -ano | findStr "3000"
         You will get the ID of the process running on the port
-    Then in CMD, run command: 
+        
+Then in CMD, run command: 
+
         taskkill /pid {id} /f
         (Replace {id} with the ID found in the previous step)
 
