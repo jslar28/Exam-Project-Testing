@@ -5,12 +5,10 @@ Exam project for testing
 
 Commands in terminal:
 
-cd ./frontend
-    
+    cd ./frontend
     (Go to frontend folder in terminal)
 
-npm install
-
+    npm install
     (Installs dependencies)
 
 Make sure nothing runs on port 3000
