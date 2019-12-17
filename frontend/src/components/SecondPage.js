@@ -29,7 +29,7 @@ class SecondPage extends React.Component {
     }
 
     prev = () => {
-        this.props.history.push('/')
+        this.props.history.push('/1')
     }
 
     render() {

@@ -10,13 +10,15 @@ import FirstPage from './components/FirstPage';
 import SecondPage from './components/SecondPage';
 import ThirdPage from './components/ThirdPage';
 import FourthPage from './components/FourthPage';
+import StartPage from './components/StartPage';
 
 const Root = () => {
   return (
     <div className="container">
       <Switch>
-        <Route exact path="/main" component={MainPage} />
-        <Route exact path="/" component={FirstPage} />
+        <Route exact path="/1" component={FirstPage}/>
+        <Route exact path="/" component={MainPage} />
+        <Route exact path="/start" component={StartPage} />
         <Route exact path="/2" component={SecondPage} />
         <Route exact path="/3" component={ThirdPage} />
         <Route exact path="/4" component={FourthPage} />

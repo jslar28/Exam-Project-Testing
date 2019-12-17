@@ -35,7 +35,7 @@ class FourthPage extends React.Component {
 
     next = () => {
         this.props.history.push({
-            pathname: '/main',
+            pathname: '/',
             state: this.state
         })
     }

@@ -4,6 +4,11 @@ Exercise 1 + 9
 
 ## Setup
 
+### Environment
+
+Selenium IDE Chrome Extension v3.16.1
+Google Chrome Web Browser v79.0.3945.79 (Officiel version) (64-bit)
+
 ### Setup Frontend
 Commands in terminal:
 
